@@ -55,12 +55,12 @@ Any components customised from the official Armbian build are listed below.
 
 Component | Description
 |:--|:--
-| User Creation | Automatic creation of user `htc`
-| Initial Startup Wizard | - Allows specification of `root` password<br>- Allows specification of `htc` password<br>- Wifi Connection Manager<br>- Timezone/Local Customization<br>- HTC Display Url Configuration
-| Auto-login | Automatic login to desktop as user `htc`
-| Auto-start | - Automatic start of browser in kiosk mode<br>- Automatic hide of mouse cursor after 2 second idle time.
+| User Creation | - Automatic creation of user `htc`
+| Initial Startup Wizard | - Allows specification of `root` password<br>- Allows specification of `htc` password<br>- Wifi Connection Manager<br>- Timezone/Local Customization<br>- HTC Display Url Configuration<br>- NoMachine Free Server Installation/Configuration
+| Auto-login | - Automatic login to desktop as user `htc`
+| Auto-start | - Automatic start of browser in kiosk mode<br>- Automatic hiding of mouse cursor after 2 second idle time.
 
-
+  
 ## Project structure
 
 The Armbian build system folder structure is shown below and any directories or files customised from the official Armbian build are marked with a `*`.
@@ -147,6 +147,28 @@ The Armbian build system folder structure is shown below and any directories or 
 ## Support
 
 Coming soon.
+
+## Administration
+
+When first run, a NoMachine server instance will be configured to allow ongoing administration of the device. In order to manage the devices, please download the [NoMachine Installer](https://downloads.nomachine.com/) for the OS of the machine being used to administrator the LePotato devices. When the NoMachine client is opened, it will automatically search for nearby devices:
+
+![Alt text](images/searching.png)
+
+Any devices on the same network will automatically be displayed:
+
+![Alt text](images/machines.png)
+
+When first connecting to a device you will received a comfirmation of the host identification. Select OK to confirm and the choice will be remembered for further connections.
+
+![Alt text](images/verify-host.png)
+
+When asked for user credentials, enter `htc` as the username and the password configuration when the device was first initialised. Save the password in the connection file and always login using this method.
+
+![Alt text](images/credentials.png)
+
+After some initial instrctional screens which can be dismissed for further connections, you will be presented with a remote control window showing the current XFCE session.
+
+![Alt text](images/remote-access.png)
 
 ## Contact
 
