@@ -356,7 +356,7 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 	echo -e "Welcome to \e[1:96mHTC Display \x1B[0mon \e[1m\e[97mARMBIAN\x1B[0m! \n"
 	echo -e "\e[1m\e[92mExecuting first run process...\x1B[0m"
 
-	trap '' 2
+trap '' 2
 
 	REPEATS=3
 	while [ -f "/root/.not_logged_in_yet" ]; do
@@ -422,7 +422,7 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 		echo -e "\e[4m\e[96m[Root User Configuration]\x1B[0m"
 		echo ""
 		echo -e "Creating a htc user account. Press <Ctrl-C> to abort"
-		[ -n "$desktop_lightdm" ] && echo -e "\e[0;31mDesktop environment will not be enabled if you abort the new user creation\x1B[0m"
+		[[ "${desktop_dm}" != "none" ]] && echo -e "\e[0;31mDesktop environment will not be enabled if you abort the new user creation\x1B[0m"
 		add_user
 	done
 	trap - INT TERM EXIT
@@ -441,6 +441,21 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 	if [[ ${USER_SHELL} == zsh ]]; then
 		printf "\nYou selected \e[0;91mZSH\x1B[0m as your default shell. If you want to use it right away, please logout and login! \n\n"
 	fi
+
+	echo ""
+	echo ""
+	echo -e "\e[4m\e[96m[HTC Display Setup]\x1B[0m"
+	echo ""
+
+	# Read the address of the HTC Display website that hosts the alert dashboard. If not specified, use the default.
+	read -r -p $'Enter the HTC Display Web address \e[1m\e[93m[http://192.168.0.230:3000/]\e[0m: ' DISPLAY_URL
+	DISPLAY_URL=${DISPLAY_URL:-http://192.168.0.230:3000/}
+
+	# Write the DISPLAY_URL to the bash_profile
+	{
+		echo "# HTC Display Env Vars"
+		echo "export DISPLAY_URL=$DISPLAY_URL"
+	} >> /home/"$RealUserName"/htc.env
 
 	echo ""
 	echo ""
@@ -602,4 +617,8 @@ if [[ -f /root/.not_logged_in_yet && -n $(tty) ]]; then
 			printf "\e[0;91mPlease reboot the system now \x1B[0m \n\n"
 		fi
 	fi
+
+	# Configure power management to never turn off
+	xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode -T
+
 fi

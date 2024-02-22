@@ -310,6 +310,12 @@ InstallHtcDisplay()
 	apt-get install -yy unclutter
 	apt-get install -yy xfconf
 
+	# Download nomachine to temp file and install it
+	FILE=$(mktemp)
+	NX_INSTALL_URL="https://download.nomachine.com/download/8.10/Linux/nomachine_8.10.1_1_amd64.deb"
+	wget "$NX_INSTALL_URL" -qO $FILE && apt-get install -y $FILE
+	/etc/NX/nxserver --useredit $RealUserName --administrator yes
+
 	# Install all required dependencies
 	npm install --prefix $HTCDISPLAY_INSTALL_DIR
 

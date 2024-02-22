@@ -8,9 +8,13 @@
 
 ## Table of contents
 
+- [Table of contents](#table-of-contents)
 - [What does this project do?](#what-does-this-project-do)
 - [Download prebuilt images](#download-prebuilt-images)
+  - [Supported boards](#supported-boards)
+  - [Releases](#releases)
 - [Building the image](#building-the-image)
+- [Installation and usage](#installation-and-usage)
 - [Customised Components](#customised-components)
 - [Project structure](#project-structure)
 - [Support](#support)
@@ -43,33 +47,7 @@ As this is a customised version of Armbian, the build process is the same as for
 
 ## Installation and usage
 
-To install image on a supported LePotato single board computer (SBC), download an image from [Releases](https://github.com/slamb2k/build/releases) and use a tool such as [BalenaEtcher](https://etcher.balena.io/#download-etcher) to write the image to a suitable SD Card.
-
-Once the image is written, insert the SD Card into the SBC and power it on. The system will detect that this is the first run and start an initialisation process
-
-Enter a strong password for the root user and then confirm it. Remember this password for future use.
-
-![Alt text](images/root-user.png)
-
-The htc user will be the operational user and requires another strong password. Use something you will remember as this as it will be the password used to access the device locally or remotely.
-
-![Alt text](images/htc-user.png)
-
-If a network connection is not found or wireless is being used, configure the wireless network and continue.
-
-![Alt text](images/wireless.png)
-
-Once the network is connected, use the IP address connected to determine and install locales.
-
-![Alt text](images/locale.png)
-
-Depending on the configuration of your LAS Server, either enter a specific IP address and port where the HTC Display Server is running or simply hit enter to use the default address.
-
-![Alt text](images/webaddress.png)
-
-Power management will be configured to keep the device on at all times and NoMachine NX Server will be installed/activated.
-
-Finally, the device will be rebooted and will login automatically to XFCE where a chromium window running in kiosk mode will display the HTC Display Server.
+Coming soon.
 
 ## Customised Components
 
@@ -82,7 +60,7 @@ Component | Description
 | Auto-login | - Automatic login to desktop as user `htc`
 | Auto-start | - Automatic start of browser in kiosk mode<br>- Automatic hiding of mouse cursor after 2 second idle time.
 
-
+  
 ## Project structure
 
 The Armbian build system folder structure is shown below and any directories or files customised from the official Armbian build are marked with a `*`.
@@ -165,6 +143,10 @@ The Armbian build system folder structure is shown below and any directories or 
 
 ```
 </details>
+
+## Support
+
+Coming soon.
 
 ## Administration
 
